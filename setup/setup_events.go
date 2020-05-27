@@ -17,20 +17,20 @@ import (
 )
 
 type setup struct {
-	InstallKey    string `json:"installKey"`
-	Stage         uint   `json:"stage"`
-	RedisHostname string `json:"redisHostname"`
-	RedisPassword string `json:"redisPassword"`
-	S3Region string `json:"s3Region"`
-	S3AccessKeyID string `json:"s3AccessKeyId"`
+	InstallKey        string `json:"installKey"`
+	Stage             uint   `json:"stage"`
+	RedisHostname     string `json:"redisHostname"`
+	RedisPassword     string `json:"redisPassword"`
+	S3Region          string `json:"s3Region"`
+	S3AccessKeyID     string `json:"s3AccessKeyId"`
 	S3SecretAccessKey string `json:"s3SecretAccessKey"`
-	S3Endpoint string `json:"s3Endpoint"`
-	S3Bucket string `json:"s3Bucket"`
-	S3BucketURL string `json:"s3BucketUrl"`
-	MailgunDomain string `json:"mailgunDomain"`
+	S3Endpoint        string `json:"s3Endpoint"`
+	S3Bucket          string `json:"s3Bucket"`
+	S3BucketURL       string `json:"s3BucketUrl"`
+	MailgunDomain     string `json:"mailgunDomain"`
 	MailgunPrivateKey string `json:"mailgunPrivateKey"`
-	MailgunFrom string `json:"mailgunFrom"`
-	FirstUserEmail string `json:"firstUserEmail"`
+	MailgunFrom       string `json:"mailgunFrom"`
+	FirstUserEmail    string `json:"firstUserEmail"`
 	FirstUserUsername string `json:"firstUserUsername"`
 	FirstUserPassword string `json:"firstUserPassword"`
 }
@@ -71,7 +71,7 @@ func setupS3(c echo.Context, s *setup) (bool, error) {
 		AccessKeyId:     s.S3AccessKeyID,
 		SecretAccessKey: s.S3SecretAccessKey,
 		Region:          s.S3Bucket,
-		BucketURL: s.S3BucketURL,
+		BucketURL:       s.S3BucketURL,
 	}
 	ses := x.CreateS3Client()
 

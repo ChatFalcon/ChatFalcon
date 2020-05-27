@@ -11,7 +11,7 @@ import (
 // Token defines the user token.
 type Token struct {
 	Username string `json:"username" bson:"username"`
-	Token string `json:"token" bson:"_id"`
+	Token    string `json:"token" bson:"_id"`
 }
 
 // Sets the password. PLEASE MAKE SURE THE PASSWORD ISN'T BLANK BEFORE RUNNNING THIS!

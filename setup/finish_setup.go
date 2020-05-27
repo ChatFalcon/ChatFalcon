@@ -24,7 +24,7 @@ func finishSetup(c echo.Context, s *setup) (bool, error) {
 		}
 	}
 	cfg := &config.ServerConfig{
-		S3Config:       &config.S3Config{
+		S3Config: &config.S3Config{
 			Endpoint:        s.S3Endpoint,
 			Bucket:          s.S3Bucket,
 			AccessKeyId:     s.S3AccessKeyID,
@@ -32,8 +32,8 @@ func finishSetup(c echo.Context, s *setup) (bool, error) {
 			Region:          s.S3Region,
 			BucketURL:       s.S3BucketURL,
 		},
-		RedisConfig:    r,
-		MailgunConfig:  &config.MailgunConfig{
+		RedisConfig: r,
+		MailgunConfig: &config.MailgunConfig{
 			Domain:     s.MailgunDomain,
 			PrivateKey: s.MailgunPrivateKey,
 			From:       s.MailgunFrom,
@@ -42,7 +42,7 @@ func finishSetup(c echo.Context, s *setup) (bool, error) {
 		Description:    "Your ChatFalcon forum has been configured!",
 		Warnings:       []*config.Warning{},
 		SignupsEnabled: true,
-		CurrentTheme: "default",
+		CurrentTheme:   "default",
 	}
 
 	// Prep the bucket.
@@ -67,9 +67,9 @@ func finishSetup(c echo.Context, s *setup) (bool, error) {
 		Perms: &user.Permissions{
 			Admin: true,
 		},
-		Username: s.FirstUserUsername,
-		Email: s.FirstUserEmail,
-		PFPUrl: url,
+		Username:  s.FirstUserUsername,
+		Email:     s.FirstUserEmail,
+		PFPUrl:    url,
 		Confirmed: true,
 	}
 	token, err := u.Create(s.FirstUserPassword)
@@ -77,9 +77,9 @@ func finishSetup(c echo.Context, s *setup) (bool, error) {
 		return true, c.String(http.StatusInternalServerError, err.Error())
 	}
 	c.SetCookie(&http.Cookie{
-		Name:       "token",
-		Value:      token,
-		MaxAge:		0,
+		Name:   "token",
+		Value:  token,
+		MaxAge: 0,
 	})
 
 	// Return no errors.

@@ -68,22 +68,22 @@ type RedisConfig struct {
 
 // MailgunConfig is used to define the Mailgun configuration.
 type MailgunConfig struct {
-	Domain string `json:"domain"`
+	Domain     string `json:"domain"`
 	PrivateKey string `json:"privateKey"`
-	From string `json:"from"`
+	From       string `json:"from"`
 }
 
 // ServerConfig is used to define the servers configuration.
 type ServerConfig struct {
-	S3Config       *S3Config    `json:"s3Config" bson:"s3Config"`
-	RedisConfig    *RedisConfig `json:"redisConfig" bson:"redisConfig"`
+	S3Config       *S3Config      `json:"s3Config" bson:"s3Config"`
+	RedisConfig    *RedisConfig   `json:"redisConfig" bson:"redisConfig"`
 	MailgunConfig  *MailgunConfig `json:"mailgunConfig" bson:"mailgunConfig"`
-	Name           string       `json:"name" bson:"name"`
-	Description    string       `json:"description" bson:"description"`
-	Warnings       []*Warning   `json:"warnings" bson:"warnings"`
-	CustomScript   string       `json:"customScript" bson:"customScript"`
-	CustomHead     string       `json:"customHead" bson:"customHead"`
-	CustomBody     string       `json:"customBody" bson:"customBody"`
-	CurrentTheme string `json:"currentTheme" bson:"currentTheme"`
-	SignupsEnabled bool         `json:"signupsEnabled" bson:"signupsEnabled"`
+	Name           string         `json:"name" bson:"name"`
+	Description    string         `json:"description" bson:"description"`
+	Warnings       []*Warning     `json:"warnings" bson:"warnings"`
+	CustomScript   string         `json:"customScript" bson:"customScript"`
+	CustomHead     string         `json:"customHead" bson:"customHead"`
+	CustomBody     string         `json:"customBody" bson:"customBody"`
+	CurrentTheme   string         `json:"currentTheme" bson:"currentTheme"`
+	SignupsEnabled bool           `json:"signupsEnabled" bson:"signupsEnabled"`
 }
