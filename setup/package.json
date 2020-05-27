@@ -1,0 +1,23 @@
+{
+  "name": "setup",
+  "version": "1.0.0",
+  "description": "The OOBE for ChatFalcon.",
+  "repository": {
+    "url": "https://github.com/ChatFalcon/ChatFalcon/setup"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4"
+  },
+  "scripts": {
+    "build": "parcel build src/ui.js --no-content-hash --public-url /setup/"
+  },
+  "browserslist": [
+    "last 10 Chrome versions"
+  ],
+  "author": "ChatFalcon Dev Team",
+  "license": "GPL-2.0",
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
+}

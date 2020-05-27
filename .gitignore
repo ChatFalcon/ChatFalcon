@@ -1,0 +1,8 @@
+# Setup
+setup/dist/ui.js.map
+setup/dist/ui.js
+setup/node_modules
+setup/.cache
+
+# IDE's
+.idea/
