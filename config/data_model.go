@@ -86,4 +86,6 @@ type ServerConfig struct {
 	CustomBody     string         `json:"customBody" bson:"customBody"`
 	CurrentTheme   string         `json:"currentTheme" bson:"currentTheme"`
 	SignupsEnabled bool           `json:"signupsEnabled" bson:"signupsEnabled"`
+	TitleFormat    string         `json:"titleFormat" bson:"titleFormat"`
+	Keywords       string         `json:"keywords" bson:"keywords"`
 }

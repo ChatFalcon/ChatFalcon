@@ -3,7 +3,10 @@ package config
 import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/s3"
+	"io/ioutil"
+	"mime"
 	"os"
+	"path/filepath"
 )
 
 func fileS3Copy(ses *s3.S3, bucket, acl, fp, bucketPath, mimeType string) error {
@@ -44,29 +47,17 @@ func (s *S3Config) BucketPrep() error {
 	}
 
 	// Set the default theme.
-	err = fileS3Copy(ses, s.Bucket, "public-read", "./frontend/dist/base.html", "themes/default/base.html", "text/html; charset=utf-8")
+	files, err := ioutil.ReadDir("./frontend/dist")
 	if err != nil {
 		return err
 	}
-	err = fileS3Copy(ses, s.Bucket, "public-read", "./frontend/dist/manifest.json", "themes/default/manifest.json", "application/json")
-	if err != nil {
-		return err
-	}
-	err = fileS3Copy(ses, s.Bucket, "public-read", "./frontend/dist/ui.css.map", "themes/default/ui.css.map", "application/json")
-	if err != nil {
-		return err
-	}
-	err = fileS3Copy(ses, s.Bucket, "public-read", "./frontend/dist/ui.js.map", "themes/default/ui.js.map", "application/json")
-	if err != nil {
-		return err
-	}
-	err = fileS3Copy(ses, s.Bucket, "public-read", "./frontend/dist/ui.css", "themes/default/ui.css", "text/css")
-	if err != nil {
-		return err
-	}
-	err = fileS3Copy(ses, s.Bucket, "public-read", "./frontend/dist/ui.js", "themes/default/ui.js", "application/javascript")
-	if err != nil {
-		return err
+	for _, f := range files {
+		if !f.IsDir() {
+			err = fileS3Copy(ses, s.Bucket, "public-read", "./frontend/dist/"+f.Name(), "themes/default/"+f.Name(), mime.TypeByExtension(filepath.Ext(f.Name())))
+			if err != nil {
+				return err
+			}
+		}
 	}
 
 	// Return no errors.
